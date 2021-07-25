@@ -37,4 +37,4 @@ The application will be used to generate a professional README for various proje
 ## Video
 undefined
   
-  
+ ![images](https://user-images.githubusercontent.com/80433477/126913769-34b01e97-fe0f-466d-be29-42b9a8bdb5cc.jpg) 
