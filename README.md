@@ -26,8 +26,8 @@ STEP 1: Set-up GitHub repo STEP 2: Create a project folder using the command-lin
 The application will be used to generate a professional README for various projects
 
 ## licenses 
-MIT
-![Tux, the Linux mascot](https://img.shields.io/badge/License-MIT-green)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- ![Tux, the Linux mascot](https://img.shields.io/badge/License-MIT-green) -->
 
 ## video
 undefined
