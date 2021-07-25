@@ -35,6 +35,6 @@ The application will be used to generate a professional README for various proje
 <!-- ![Tux, the Linux mascot](https://img.shields.io/badge/License-MIT-green) -->
 
 ## Video
-undefined
+<iframe src="https://drive.google.com/file/d/1pE2S0O_oisgIIPVQHhp32QhkzwxRUZJb/preview" width="640" height="480"></iframe>
   
   
