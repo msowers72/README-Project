@@ -1,33 +1,28 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
 
-const generateReadme = (answers) => {
-  const readmePageContent = `Here's what you entered:
-  
-  ${JSON.stringify(answers, null, 2)}
-  `;
 
-   fs.writeFile('README.md', readmePageContent, (err) =>
-     err ? console.log(err) : console.log('Successfully created README!')
-  );
-}
 
-inquirer
-  .prompt([
+const writeFileAsync = util.promisify(fs.writeFile);
+
+function promptUser() {
+   
+   return inquirer.prompt([
     {
       type: 'input',
       name: 'title',
       message: 'What is the name of the project?',
-    },
-    {
-      type: 'input',
-      name: 'table of content',
-      message: 'Provide a table of contents?',
-    },
+    },    
     {
       type: 'input',
       name: 'username',
-      message: 'Input your user name?',
+      message: 'Input your github user name?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Input your email?',
     },
     {
       type: 'input',
@@ -44,47 +39,67 @@ inquirer
       name: 'usage',
       message: 'How will this application be used?',
     },
-
     {
       type: 'input',
       name: 'licenses',
-      message: 'Provide the required licenses for this project?',
+      message: 'Provide the required licenses for this project?',      
+    },
+    {
+      type: 'input',
+      name: 'video',
+      message: 'Readme instructional video',      
     },
 
-  ])
-  .then((answers) => {
-    generateReadme(answers)
-  });
+  ]);
+}
 
-  function generateMarkdown(response) {
+function generateMarkdown(response) {
     return `
-    # ${response.title}
-    
-  
-    # Table of Contents
-    -[description](#description)
-    -[installation](#installation)
-    -[usage](#usage)
-    -[licenses](#licenses)
-    -[username](#username)
-  
-    ${response.username}
-    ##username
-  
-    ${response.description}
-    ##description:
-  
-    ${response.installation}
-    ##installation
-  
-    ${response.usage}
-    ##usage
-  
-    ${response.licenses}
-    ##licenses 
+# ${response.title}
+
+
+# Table of Contents
+- [username](#username)
+- [description](#description)
+- [installation](#installation)
+- [usage](#usage)
+- [licenses](#licenses)
+
+
+## username
+${response.username}
+
+## email
+${response.email}
+
+## description:
+${response.description}
+
+## installation
+${response.installation}
+
+## usage
+${response.usage}
+
+## licenses 
+${response.licenses}
+![Tux, the Linux mascot](https://img.shields.io/badge/License-MIT-green)
+
+## video
+${response.Video}
   
   `;
   }
 
+  async function init() {
+      try {
+          const response = await promptUser();
+          const readMe = generateMarkdown(response);
+          await writeFileAsync("README.md", readMe);
+          console.log("Success!");
+      } catch (err) {
+          console.log(err);
+      }
+  }
 
-  
+  init();
