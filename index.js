@@ -66,26 +66,26 @@ function generateMarkdown(response) {
 - [licenses](#licenses)
 
 
-## username
+## GitHub Username
 ${response.username}
 
-## email
+## Email
 ${response.email}
 
-## description:
+## Description:
 ${response.description}
 
-## installation
+## Installation
 ${response.installation}
 
-## usage
+## Usage
 ${response.usage}
 
-## licenses 
+## Licenses 
 ${response.licenses}
 ![Tux, the Linux mascot](https://img.shields.io/badge/License-MIT-green)
 
-## video
+## Video
 ${response.Video}
   
   `;
